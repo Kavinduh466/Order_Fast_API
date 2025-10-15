@@ -2,7 +2,7 @@
 
 from sqlalchemy import Column, Integer, String, Float, DateTime, Enum, ForeignKey
 from sqlalchemy.orm import relationship, declarative_base
-from datetime import datetime
+from datetime import datetime,timezone
 import enum
 from pydantic import BaseModel, Field, EmailStr
 from typing import List, Optional
@@ -31,8 +31,8 @@ class Order(Base):
     total_amount = Column(Float, nullable=False)
     status = Column(Enum(OrderStatusEnum), default=OrderStatusEnum.PENDING)
     notes = Column(String, nullable=True)
-    created_at = Column(DateTime, default=datetime.utcnow)
-    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+    created_at = Column(DateTime(timezone=True), default=lambda: datetime.now(timezone.utc))
+    updated_at = Column(DateTime(timezone=True), default=lambda: datetime.now(timezone.utc), onupdate=lambda: datetime.now(timezone.utc))
 
     items = relationship("OrderItem", back_populates="order", cascade="all, delete-orphan")
 
