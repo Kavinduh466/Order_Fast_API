@@ -11,3 +11,4 @@ Base.metadata.create_all(bind=engine)
 @app.get("/")
 def greet():
     return "Hi"
+
