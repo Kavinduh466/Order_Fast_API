@@ -1,10 +1,11 @@
+# routers/orderrouter.py
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from database import SessionLocal
 from schemas.order import OrderCreate, OrderResponse, OrderUpdate
 from services.order_service import (
-    create_new_order,
-    get_orders,
+    create_order,
+    get_all_orders,
     get_order,
     update_existing_order,
     delete_existing_order
@@ -21,11 +22,11 @@ def get_db():
 
 @router.post("/", response_model=OrderResponse)
 def create_order_route(order_data: OrderCreate, db: Session = Depends(get_db)):
-    return create_new_order(db, order_data)
+    return create_order(db, order_data)
 
 @router.get("/", response_model=list[OrderResponse])
 def get_all_orders_route(db: Session = Depends(get_db)):
-    return get_orders(db)
+    return get_all_orders(db)
 
 @router.get("/{order_id}", response_model=OrderResponse)
 def get_order_by_id_route(order_id: int, db: Session = Depends(get_db)):
