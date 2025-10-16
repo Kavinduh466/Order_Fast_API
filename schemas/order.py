@@ -1,20 +1,13 @@
-# app/schemas/order.py
-
 from pydantic import BaseModel, Field, EmailStr
 from typing import List, Optional
 from datetime import datetime
 from enum import Enum
 
-# Enum for order status
 class OrderStatus(str, Enum):
     PENDING = "PENDING"
     PROCESSING = "PROCESSING"
     COMPLETED = "COMPLETED"
     CANCELLED = "CANCELLED"
-
-# -----------------------------
-# Request models
-# -----------------------------
 
 class OrderItemCreate(BaseModel):
     product_id: int
@@ -25,9 +18,10 @@ class OrderCreate(BaseModel):
     shipping_address: str
     items: List[OrderItemCreate]
 
-# -----------------------------
-# Response models
-# -----------------------------
+class OrderUpdate(BaseModel):
+    shipping_address: Optional[str] = None
+    status: Optional[OrderStatus] = None
+    notes: Optional[str] = None
 
 class OrderItemResponse(BaseModel):
     product_id: int
