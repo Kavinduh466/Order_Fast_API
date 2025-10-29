@@ -24,6 +24,20 @@ class BrandCreate(BaseModel):
     website: str
     products: List[ProductItemCreate]
 
+class ProductItemUpate(BaseModel):
+    product_id: int
+    productType: str
+    productName: str
+    price: int
+
+
+class BrandUpdate(BaseModel):
+    brand_name: str
+    country: str
+    website: str
+    products: List[ProductItemUpate]
+
+
 class ProductItemResponse(BaseModel):
     product_id: int
     product_name: str

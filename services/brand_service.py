@@ -1,9 +1,11 @@
 from sqlalchemy.orm import Session
-from schemas.brand import BrandCreate, BrandResponse, ProductItemResponse
+from schemas.brand import BrandCreate, BrandResponse, ProductItemResponse, BrandUpdate
 from models.brand import Brand
 from repositories.brand_repository import (
     create_brand_db,
-    get_all_products_db
+    get_all_products_db,
+    get_brand_by_id_db,
+    update_brand_by_id_db
 )
 
 def map_brand_to_response(brand: Brand) -> BrandResponse:
@@ -32,3 +34,11 @@ def create_brand(db: Session, brand_data: BrandCreate) -> BrandResponse:
 def get_all_brands(db: Session) -> list[BrandResponse]:
     brands = get_all_products_db(db)
     return [map_brand_to_response(b) for b in brands]
+
+def get_brand_by_id_service(db: Session, brand_id: int) -> BrandResponse:
+    brand = get_brand_by_id_db(db, brand_id)
+    return map_brand_to_response(brand)
+
+def update_brand_by_id_service(db: Session, brand_id: int, brand_data: BrandUpdate) -> BrandResponse:
+    brand = update_brand_by_id_db(db, brand_id,brand_data)
+    return map_brand_to_response(brand)
