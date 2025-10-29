@@ -24,5 +24,18 @@ class BrandCreate(BaseModel):
     website: str
     products: List[ProductItemCreate]
 
+class ProductItemResponse(BaseModel):
+    product_id: int
+    product_name: str
+    product_type: str
+    price: int
 
+class BrandResponse(BaseModel):
+    brand_id : int
+    brand_name: str
+    country: str
+    website: str
+    products: List[ProductItemResponse]
 
+    class Config:
+        orm_mode = True

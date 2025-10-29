@@ -20,6 +20,7 @@ class Product(Base):
         product_id  = Column(Integer, primary_key=True, index=True)
         productType = Column(Enum(ProductTypeEnum), default=ProductTypeEnum.Electronic)
         productName = Column(String, nullable= False)
+        price = Column(Integer, nullable=False)
 
         brand_id = Column(Integer, ForeignKey("brands.brand_id"))
 
