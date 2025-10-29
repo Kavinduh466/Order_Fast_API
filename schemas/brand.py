@@ -15,10 +15,10 @@ class ProductItemCreate(BaseModel):
     product_id: int
     productType: str
     productName: str
+    price: int
     
 
 class BrandCreate(BaseModel):
-    brand_id: int 
     brand_name: str
     country: str
     website: str
@@ -27,7 +27,7 @@ class BrandCreate(BaseModel):
 class ProductItemResponse(BaseModel):
     product_id: int
     product_name: str
-    product_type: str
+    product_type: ProductTypeEnum
     price: int
 
 class BrandResponse(BaseModel):

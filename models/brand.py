@@ -5,8 +5,8 @@ from datetime import datetime,timezone
 import enum
 from pydantic import BaseModel, Field, EmailStr
 from typing import List, Optional
+from .base import Base
 
-Base = declarative_base()
 
 class ProductTypeEnum(str, enum.Enum):
     Clothes = "CLOTHES"

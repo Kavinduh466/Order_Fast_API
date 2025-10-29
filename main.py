@@ -1,9 +1,12 @@
 from fastapi import FastAPI
 from database import engine
 from database import SessionLocal
-from models.order import Base
 from routers.orderrouter import orderrouter
 from routers.brandrouter import brandrouter
+
+from models.base import Base
+from models.order import Order, OrderItem
+from models.brand import Brand, Product
 
 app = FastAPI()
 

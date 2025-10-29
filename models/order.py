@@ -6,12 +6,12 @@ from datetime import datetime,timezone
 import enum
 from pydantic import BaseModel, Field, EmailStr
 from typing import List, Optional
+from .base import Base
+
 
 Base = declarative_base()
 
-# -----------------------------
-# SQLAlchemy Models
-# -----------------------------
+
 
 class OrderStatusEnum(str, enum.Enum):
     PENDING = "PENDING"

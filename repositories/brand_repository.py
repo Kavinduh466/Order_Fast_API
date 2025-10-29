@@ -4,7 +4,6 @@ from schemas.brand import BrandCreate
 
 def create_brand_db(db: Session, brand_data: BrandCreate ) -> Brand:
     brand = Brand(
-        brand_id = brand_data.brand_id,
         brand_name = brand_data.brand_name,
         country = brand_data.country,
         website = brand_data.website, 
@@ -19,7 +18,8 @@ def create_brand_db(db: Session, brand_data: BrandCreate ) -> Brand:
             product_id = product.product_id,
             brand_id = brand.brand_id,
             productType = product.productType,
-            productName = product.productName
+            productName = product.productName,
+            price = product.price
 
         )
         db.add(products)
