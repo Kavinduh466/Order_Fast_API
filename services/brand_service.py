@@ -5,8 +5,12 @@ from repositories.brand_repository import (
     create_brand_db,
     get_all_products_db,
     get_brand_by_id_db,
+<<<<<<< HEAD
     update_brand_by_id_db,
     delete_brand_by_id_db
+=======
+    update_brand_by_id_db
+>>>>>>> 72ef6c01c8454a502901456f7208bfee44a77a45
 )
 
 def map_brand_to_response(brand: Brand) -> BrandResponse:
@@ -42,7 +46,11 @@ def get_brand_by_id_service(db: Session, brand_id: int) -> BrandResponse:
 
 def update_brand_by_id_service(db: Session, brand_id: int, brand_data: BrandUpdate) -> BrandResponse:
     brand = update_brand_by_id_db(db, brand_id,brand_data)
+<<<<<<< HEAD
     return map_brand_to_response(brand)
 
 def delete_brand_by_id_service(db: Session, brand_id: int):
     return delete_brand_by_id_db(db, brand_id)
+=======
+    return map_brand_to_response(brand)
+>>>>>>> 72ef6c01c8454a502901456f7208bfee44a77a45
