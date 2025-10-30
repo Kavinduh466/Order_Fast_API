@@ -6,12 +6,8 @@ from services.brand_service import (
     create_brand,
     get_all_brands,
     get_brand_by_id_service,
-<<<<<<< HEAD
     update_brand_by_id_service,
     delete_brand_by_id_service
-=======
-    update_brand_by_id_service
->>>>>>> 72ef6c01c8454a502901456f7208bfee44a77a45
 )
 
 brandrouter = APIRouter(prefix="/brands", tags=["Brands"])
@@ -37,13 +33,9 @@ def get_brand_by_id(brand_id: int,db: Session = Depends(get_db)):
 
 @brandrouter.put("/{brand_id}", response_model=BrandResponse)
 def update_brand_by_id(brand_id: int,brand_data: BrandUpdate, db: Session= Depends(get_db)):
-<<<<<<< HEAD
     return update_brand_by_id_service(db, brand_id, brand_data)
 
 @brandrouter.delete("/{brand_id}")
 def delete_brand_by_id(brand_id:int, db:Session=Depends(get_db)):
     if(delete_brand_by_id_service(db, brand_id)):
         return "brand {brand_id}delted successfully"
-=======
-    return update_brand_by_id_service(db, brand_id, brand_data)
->>>>>>> 72ef6c01c8454a502901456f7208bfee44a77a45

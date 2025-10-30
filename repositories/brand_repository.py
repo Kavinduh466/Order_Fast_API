@@ -72,7 +72,6 @@ def update_brand_by_id_db(db: Session, brand_id: int, brand_data: BrandUpdate) -
     db.refresh(brand)
     return brand
 
-<<<<<<< HEAD
  
 def delete_brand_by_id_db(db: Session, brand_id:int):
         brand = db.query(Brand).filter(Brand.brand_id == brand_id).first()
@@ -81,10 +80,6 @@ def delete_brand_by_id_db(db: Session, brand_id:int):
         db.delete(brand)
         db.commit()
         return True
-=======
-        
- 
->>>>>>> 72ef6c01c8454a502901456f7208bfee44a77a45
 
     
     
